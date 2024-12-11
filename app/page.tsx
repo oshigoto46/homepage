@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link"; // next/link をインポート
 import { useState } from "react";
+import ForBrands from "./components/ForBrands";
 
 export default function Home() {
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
@@ -18,7 +20,6 @@ export default function Home() {
               onMouseLeave={() => setIsSolutionsOpen(false)}
             >
               <button className="hover:text-blue-500">Solutions</button>
-              {/* ドロップダウンメニュー */}
               {isSolutionsOpen && (
                 <ul className="absolute left-0 mt-2 w-56 bg-white border rounded-lg shadow-lg">
                   <li className="px-4 py-2 hover:bg-gray-100">
@@ -50,7 +51,13 @@ export default function Home() {
         </nav>
         <div className="flex items-center space-x-4">
           <button className="hover:text-blue-500">日本語</button>
-          <button className="px-4 py-2 bg-blue-500 text-white rounded-lg">お問い合わせ</button>
+          {/* 修正点: Link 内に直接スタイルを設定 */}
+          <Link
+            href="/contact"
+            className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+          >
+            お問い合わせ
+          </Link>
         </div>
       </header>
 
@@ -64,6 +71,9 @@ export default function Home() {
           <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full"></div>
         </div>
       </section>
+
+      {/* セクション: For Brands */}
+      <ForBrands />
     </div>
   );
 }
